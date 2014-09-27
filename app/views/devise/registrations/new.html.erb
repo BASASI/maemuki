@@ -3,5 +3,5 @@
 <!-- ロゴを入れます -->
 <!-- <img src="" alt="MAEMUKI"> -->
 ここにろごがはいるぞおおおおおお
-<button type="button" class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter"></i> Twitterでログイン</button>
-<button type="button" class="btn btn-info btn-lg btn-block"><i class="fa fa-facebook-square"></i> Facebookでログイン</button>
+<%= link_to(fa_icon('twitter', text: 'Twitterでログイン'), user_omniauth_authorize_path(:twitter), class: 'btn btn-info btn-lg btn-block') %>
+<%= link_to(fa_icon('facebook-square', text: 'Facebookでログイン'), user_omniauth_authorize_path(:facebook), class: 'btn btn-info btn-lg btn-block') %>
