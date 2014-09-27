@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
+  mount_uploader :image, UserUploader
+
   has_many :identities, dependent: :delete_all
 
   def has_provider?(provider)
