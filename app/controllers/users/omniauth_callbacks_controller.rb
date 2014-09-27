@@ -13,7 +13,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def authenticate
       auth = request.env["omniauth.auth"]
       user = User.find_by_auth_params(auth)
-      hoge
       if user_signed_in?
         current_user.add_identity(auth) if user.blank?
       else
