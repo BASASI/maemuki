@@ -11,11 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927064322) do
+ActiveRecord::Schema.define(version: 20140927084525) do
+
+  create_table "identities", force: true do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.datetime "expires_at"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "user_id"
+  end
+
+  add_index "identities", ["uid", "provider"], name: "index_identities_on_uid_and_provider"
+  add_index "identities", ["uid"], name: "index_identities_on_uid"
+  add_index "identities", ["user_id", "provider"], name: "index_identities_on_user_id_and_provider"
 
   create_table "users", force: true do |t|
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0, null: false
+    t.integer  "sign_in_count",       default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -24,8 +40,14 @@ ActiveRecord::Schema.define(version: 20140927064322) do
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "screen_name"
+    t.string   "image"
+    t.string   "email",               default: "", null: false
+    t.string   "encrypted_password",  default: "", null: false
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
