@@ -26,6 +26,7 @@ group :default do
   gem 'omniauth'
   gem 'omniauth-facebook'
   gem 'omniauth-twitter'
+  gem 'twitter'
   gem 'dotenv-rails'
 
   gem 'active_model_serializers'
