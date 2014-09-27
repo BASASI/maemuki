@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :registerable, :rememberable, :trackable,
+  devise :database_authenticatable, :registerable, :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   has_many :identities, dependent: :delete_all
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       User.create!(
         name: auth.info.nickname.presence || auth.info.name.gsub(/\s/, '_'),
         screen_name: auth.info.name,
-        image_url: auth.info.image
+        # image_url: auth.info.image
       ).tap { |user| user.add_identity(auth) }
     end
   end
