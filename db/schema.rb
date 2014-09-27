@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927072905) do
+ActiveRecord::Schema.define(version: 20140927075040) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -21,7 +21,13 @@ ActiveRecord::Schema.define(version: 20140927072905) do
     t.string   "secret"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "user_id"
   end
+
+  add_index "identities", ["uid", "provider"], name: "index_identities_on_uid_and_provider"
+  add_index "identities", ["uid"], name: "index_identities_on_uid"
+  add_index "identities", ["user_id", "provider"], name: "index_identities_on_user_id_and_provider"
 
   create_table "users", force: true do |t|
     t.datetime "remember_created_at"
@@ -34,8 +40,11 @@ ActiveRecord::Schema.define(version: 20140927072905) do
     t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "screen_name"
+    t.string   "image"
   end
 
+  add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
