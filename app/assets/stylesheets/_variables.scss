@@ -18,7 +18,7 @@ $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 46.7%) !default; // #777
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #d899b7 !default;
+$brand-primary:         #D30446 !default;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #e8a8ae !default;
@@ -136,7 +136,7 @@ $table-bg:                      transparent !default;
 //** Background color used for `.table-striped`.
 $table-bg-accent:               #f9f9f9 !default;
 //** Background color used for `.table-hover`.
-$table-bg-hover:                #f5f5f5 !default;
+$table-bg-hover:                #FFC0CB !default;
 $table-bg-active:               $table-bg-hover !default;
 
 //** Border color for table and cell borders.
