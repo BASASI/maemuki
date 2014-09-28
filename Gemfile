@@ -30,6 +30,7 @@ group :default do
   gem 'dotenv-rails'
 
   gem 'active_model_serializers'
+  gem 'resque'
 end
 
 group :test, :development do
