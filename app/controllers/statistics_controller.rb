@@ -24,4 +24,29 @@ class StatisticsController < ApplicationController
         {value: negative_count, color: '#ccccff', label: "ネガ"}
       ]
   end
+
+  def displacement
+    @statistics = Statistic.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
+    positive_count = @statistics.pluck(:positive_count)
+    negative_count = @statistics.pluck(:negative_count)
+    render json: {
+        labels: (0...14).map { |d| (Date.today - d).strftime('%m/%d') }.reverse,
+        datasets: [
+          {
+            fillColor:        "rgba(255,204,204,0.3)",
+            strokeColor:      "#ffcccc",
+            pointColor:       "#ffcccc",
+            pointStrokeColor: "#ffcccc",
+            data: positive_count
+          },
+          {
+            fillColor:        "rgba(204,204,255,0.3)",
+            strokeColor:      "#ccccff",
+            pointColor:       "#ccccff",
+            pointStrokeColor: "#ccccff",
+            data: negative_count
+          }
+        ]
+      }
+  end
 end
