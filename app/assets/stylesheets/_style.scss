@@ -1,0 +1,22 @@
+$brand-primary:         #D37893 !default;
+$background:            #FFFFC5 !default;
+$index:                 #8A6961 !default;
+
+body{
+  background-color: lighten($background, 5%);
+  h2{ color: $index; }
+  h3{ color: $index; }
+}
+
+.users-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: left;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 40px 15px;
+  color: #ffffff;
+  background-image: linear-gradient(to bottom,$brand-primary 0,lighten(#D37893,20%) 100%);
+  h1 { font-size: 60px; }
+  box-shadow:0 0 20px $brand-primary;
+}
