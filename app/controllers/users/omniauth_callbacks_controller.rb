@@ -16,7 +16,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if user_signed_in?
         current_user.add_identity(auth) if user.blank?
       else
-        user = User.create_from_omniauth(auth) if user.blank?
+        if user.blank?
+          user = User.create_from_omniauth(auth)
+          Resque.enqueue(StatusAnalyzer, user)
+        end
         sign_in user
       end
       redirect_to root_path

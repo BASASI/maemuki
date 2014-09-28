@@ -1,6 +1,9 @@
+require 'resque/server'
+
 Rails.application.routes.draw do
 
   root 'home#dashboard'
+  mount Resque::Server.new, at: "/resque"
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
