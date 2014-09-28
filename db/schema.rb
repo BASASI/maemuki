@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927084525) do
+ActiveRecord::Schema.define(version: 20140928023314) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -23,11 +23,23 @@ ActiveRecord::Schema.define(version: 20140927084525) do
     t.datetime "updated_at"
     t.string   "image"
     t.integer  "user_id"
+    t.integer  "latest_id"
+    t.integer  "oldest_id"
   end
 
   add_index "identities", ["uid", "provider"], name: "index_identities_on_uid_and_provider"
   add_index "identities", ["uid"], name: "index_identities_on_uid"
   add_index "identities", ["user_id", "provider"], name: "index_identities_on_user_id_and_provider"
+
+  create_table "statistics", force: true do |t|
+    t.date     "date"
+    t.integer  "positive_count", default: 0
+    t.integer  "negative_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "identity_id"
+    t.integer  "count",          default: 0
+  end
 
   create_table "users", force: true do |t|
     t.datetime "remember_created_at"
