@@ -1,4 +1,12 @@
-  <table class="table table-hover">
+<%# Follower一覧画面 %> 
+
+<div class="users-header">
+  <div class="container text-center">
+    <h1><i class="fa fa-slideshare"></i> Follower</h1>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-hover table-condensed">
     <tr>
       <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
       <td><h3>hoge_friend</h3></td>
@@ -14,3 +22,4 @@
       <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
     </tr>
   </table>
+</div>
