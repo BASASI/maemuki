@@ -19,6 +19,9 @@ class StatisticsController < ApplicationController
     @statistics = Statistic.where(query)
     positive_count = @statistics.pluck(:positive_count).inject { |sum, c| sum += c}
     negative_count = @statistics.pluck(:negative_count).inject { |sum, c| sum += c}
-    render json: [{value: positive_count, color: '#ffcccc'}, {value: negative_count, color: '#ccccff'}]
+    render json: [
+        {value: positive_count, color: '#ffcccc', label: "ポジ"},
+        {value: negative_count, color: '#ccccff', label: "ネガ"}
+      ]
   end
 end
