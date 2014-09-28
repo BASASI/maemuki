@@ -1,11 +1,9 @@
 <!-- 一番最初の画面 -->
 
-<!-- ロゴを入れます -->
 <div class="container text-center">
-  <%= image_tag("maemuki.png", :alt => "MAEMUKI") %>
-  <br><br>
+  <%= image_tag("maemuki.png", alt: "MAEMUKI") %>
   <p class="lead">
-    <span class="red">MA</span>EMUKIは、あなたとフォロワーのつぶやき（投稿）から幸福度をはかるサービスです。（適当）
+    <span class="red">MA</span>EMUKIは、あなたとフォロワーのつぶやき（投稿）から幸福度をはかるサービスです。<small>（適当）</small>
   </p>
   <%= link_to(fa_icon('twitter', text: 'Twitterでログイン'), user_omniauth_authorize_path(:twitter), class: 'btn btn-info btn-lg btn-block') %>
   <br>
