@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928020014) do
+ActiveRecord::Schema.define(version: 20140928023314) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 20140928020014) do
 
   create_table "statistics", force: true do |t|
     t.date     "date"
-    t.integer  "positive_count"
-    t.integer  "negative_count"
+    t.integer  "positive_count", default: 0
+    t.integer  "negative_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identity_id"
+    t.integer  "count",          default: 0
   end
 
   create_table "users", force: true do |t|

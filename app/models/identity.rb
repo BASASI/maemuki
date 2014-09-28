@@ -26,13 +26,13 @@ class Identity < ActiveRecord::Base
     client = twitter_client
     opts = {count: 200, include_rts: false}
     (1..5).map { |i|
-      opts.merge!(max_id: oldest_id) if oldest_id.present? && oldest_id > 0
+      opts.merge!(max_id: self.oldest_id) if self.oldest_id.present? && self.oldest_id > 0
       # opts.merge!(since_id: latest_id) if latest_id.present?
       client.user_timeline(opts).tap do |tweets|
-        oldest_id = tweets.last.id - 1
-        oldest_id = 0 and break if tweets.blank?
+        self.oldest_id = tweets.last.id - 1
+        self.oldest_id = 0 and break if tweets.blank?
       end
-    }.flatten
+    }.flatten.tap { |s| save! }
   end
 
   def self.create_from_omniauth(auth)
