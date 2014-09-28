@@ -4,6 +4,7 @@ class Identity < ActiveRecord::Base
   TWITTER_REQUEST_LIMIT = 20
 
   belongs_to :user
+  has_many :statistics
 
   validates_presence_of :uid, :provider, :token
   validates_uniqueness_of :provider, scope: :uid
