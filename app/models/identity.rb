@@ -1,5 +1,8 @@
 class Identity < ActiveRecord::Base
 
+  # TODO: 最大で180回？
+  TWITTER_REQUEST_LIMIT = 20
+
   belongs_to :user
 
   validates_presence_of :uid, :provider, :token
@@ -18,13 +21,15 @@ class Identity < ActiveRecord::Base
     end
   end
 
-  def statuses(oldest_id = nil)
+  def statuses
     client = twitter_client
     opts = {count: 200, include_rts: false}
-    # TODO: 最大で180回？
     (1..5).map { |i|
-      client.user_timeline(oldest_id.nil? ? opts : opts.merge(max_id: oldest_id)).tap do |tweets|
+      opts.merge!(max_id: oldest_id) if oldest_id.present? && oldest_id > 0
+      # opts.merge!(since_id: latest_id) if latest_id.present?
+      client.user_timeline(opts).tap do |tweets|
         oldest_id = tweets.last.id - 1
+        oldest_id = 0 and break if tweets.blank?
       end
     }.flatten
   end
