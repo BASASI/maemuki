@@ -1,8 +1,8 @@
 class StatusAnalyzer
   @queue = :default
 
-  def self.perform(user)
-    identity = user.identities.find_by(provider: 'twitter')
+  def self.perform(user_id)
+    identity = User.find(user_id.to_i).identities.find_by(provider: 'twitter')
     identity.statuses.group_by { |status| status.created_at.to_date }.each do |date, statuses|
       results = iminos(statuses.map(&:text))
       stat = identity.statistics.build(date: date, count: statuses.length)
