@@ -4,30 +4,36 @@
     <h1><i class="fa fa-pie-chart"></i> My Data</h1>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-xs-6 text-center">
-      <%# 1Weekのグラフ %>
-      <h2>1Week</h2>
-      <%= image_tag("icon_example.png", :alt => "仮アイコン", :class => "img-thumbnail") %>
+      <%# 3daysのグラフ %>
+      <h2>3Days</h2>
+      <canvas id="graph-3days" height="300" width="300"></canvas>
     </div>
+
     <div class="col-xs-6 text-center">
-      <%# 1Monthのグラフ %>
-      <h2>1Month</h2>
-      <%= image_tag("icon_example.png", :alt => "仮アイコン", :class => "img-thumbnail") %>
+      <%# 1weekのグラフ %>
+      <h2>1Week</h2>
+      <canvas id="graph-1week" height="300" width="300"></canvas>
     </div>
   </div>
+
   <div class="row">
     <div class="col-xs-6 text-center">
-      <%# 1Yearのグラフ %>
-      <h2>1Year</h2>
-      <%= image_tag("icon_example.png", :alt => "仮アイコン", :class => "img-thumbnail") %>
+      <%# 2weeksのグラフ %>
+      <h2>2Weeks</h2>
+      <canvas id="graph-2weeks" height="300" width="300"></canvas>
     </div>
+
     <div class="col-xs-6 text-center">
+      <%# asahiのグラフ %>
       <h2>Graph</h2>
-      <%= image_tag("icon_example.png", :alt => "仮アイコン", :class => "img-thumbnail") %>
+      <canvas id="graph-asahi" height="300" width="300"></canvas>
     </div>
   </div>
+
   <br><br>
   <%= link_to(fa_icon('slideshare', text: 'Follower'), users_path, class: 'btn btn-primary btn-lg btn-block') %>
 </div>

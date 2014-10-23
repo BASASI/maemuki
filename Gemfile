@@ -21,6 +21,7 @@ group :default do
   gem 'autoprefixer-rails'
   gem 'font-awesome-rails'
   gem 'carrierwave'
+  gem 'chart-js-rails'
 
   gem 'devise'
   gem 'omniauth'

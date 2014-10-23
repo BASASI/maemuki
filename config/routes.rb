@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :users, only:[:index]
   resources :statistics, only:[:index]
 
+  get 'stats' => 'statistics#stats'
+  get 'displacement' => 'statistics#displacement'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
