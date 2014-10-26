@@ -17,6 +17,9 @@ group :default do
   # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
   gem 'jbuilder', '~> 2.0'
 
+  # Use unicorn as the app server
+  gem 'unicorn'
+
   gem 'bootstrap-sass'
   gem 'autoprefixer-rails'
   gem 'font-awesome-rails'
@@ -32,6 +35,12 @@ group :default do
 
   gem 'active_model_serializers'
   gem 'resque'
+end
+
+group :staging, :production do
+  gem 'mysql2'
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer',  platforms: :ruby
 end
 
 group :test, :development do
@@ -60,6 +69,11 @@ group :development do
   gem 'bullet'
 
   gem 'annotate', :git => 'https://github.com/ctran/annotate_models'
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do
@@ -76,17 +90,8 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
