@@ -12,6 +12,7 @@
 //
 //= require angular
 //= require onsenui
+//- require Chart
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
