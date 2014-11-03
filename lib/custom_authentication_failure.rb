@@ -1,6 +1,6 @@
 class CustomAuthenticationFailure < Devise::FailureApp 
   protected 
     def redirect_url
-      '/users/sign_up'
+      '/users/new'
     end 
 end 

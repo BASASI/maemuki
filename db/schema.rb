@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928023314) do
+ActiveRecord::Schema.define(version: 20141103110845) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140928023314) do
 
   create_table "users", force: true do |t|
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,  null: false
+    t.integer  "sign_in_count",       default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -54,11 +54,8 @@ ActiveRecord::Schema.define(version: 20140928023314) do
     t.datetime "updated_at"
     t.string   "screen_name"
     t.string   "image"
-    t.string   "email",               default: "", null: false
-    t.string   "encrypted_password",  default: "", null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
