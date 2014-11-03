@@ -1,39 +1,112 @@
-<%# ログイン後のdashboard画面 %>
-<div class="users-header">
-  <div class="container text-center">
-    <h1><i class="fa fa-pie-chart"></i> My Data</h1>
-  </div>
-</div>
+<ons-page class="ons">
+<ons-toolbar>
+  <div class="center">My Data</div>
+</ons-toolbar>
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-6 text-center">
-      <%# 3daysのグラフ %>
-      <h2>3Days</h2>
-      <canvas id="graph-3days" height="300" width="300"></canvas>
+  <h2 class="text-center">3Days<br>
+    <div>
+      <canvas id="3days" height="250" width="250"></canvas>
     </div>
+    <script>
+    var doughnutData = [
+    {
+      value: 70,
+      color:"#ee7835",
+      label: "ポジ"
+    },
+    {
+      value: 30,
+      color: "#94c9d0",
+      label: "ネガ"
+    }
+    ];
+    var options = {
+      percentageInnerCutout : 60
+    };
+    var myDoughnut = new Chart(document.getElementById("3days").getContext("2d")).Doughnut(doughnutData, options);
+    </script>
+  </h2>
 
-    <div class="col-xs-6 text-center">
-      <%# 1weekのグラフ %>
-      <h2>1Week</h2>
-      <canvas id="graph-1week" height="300" width="300"></canvas>
+  <h2 class="text-center">1Week<br>
+    <div>
+      <canvas id="1week" height="250" width="250"></canvas>
     </div>
+    <script>
+    var doughnutData = [
+    {
+      value: 70,
+      color:"#ee7835",
+      label: "ポジ"
+    },
+    {
+      value: 30,
+      color: "#94c9d0",
+      label: "ネガ"
+    }
+    ];
+    var options = {
+      percentageInnerCutout : 60
+    };
+    var myDoughnut = new Chart(document.getElementById("1week").getContext("2d")).Doughnut(doughnutData, options);
+    </script>
+  </h2>
+
+  <h2 class="text-center">2Weeks<br>
+    <div>
+      <canvas id="2weeks" height="250" width="250"></canvas>
+    </div>
+    <script>
+    var doughnutData = [
+    {
+      value: 70,
+      color:"#ee7835",
+      label: "ポジ"
+    },
+    {
+      value: 30,
+      color: "#94c9d0",
+      label: "ネガ"
+    }
+    ];
+    var options = {
+      percentageInnerCutout : 60
+    };
+    var myDoughnut = new Chart(document.getElementById("2weeks").getContext("2d")).Doughnut(doughnutData, options);
+    </script>
+  </h2>
+
+  <h2 class="text-center">Compare with the world<br>
+    <div>
+      <canvas id="world" height="250" width="250"></canvas>
+    </div>
+    <script>
+    var doughnutData = [
+    {
+      value: 70,
+      color:"#ee7835",
+      label: "ポジ"
+    },
+    {
+      value: 30,
+      color: "#94c9d0",
+      label: "ネガ"
+    }
+    ];
+    var options = {
+      percentageInnerCutout : 60
+    };
+    var myDoughnut = new Chart(document.getElementById("world").getContext("2d")).Doughnut(doughnutData, options);
+    </script>
+  </h2>
+
+  <div class="login-form">
+    <!-- <a href="followers.html"> -->
+    <%= link_to users_path do %>
+      <ons-button modifier="large" class="login-button"><i class="fa fa-male"></i> followers</ons-button>
+    <% end %>
+      <!-- fontawesomeのNew Icons in 4.2が表示されない -->
+    </a>
   </div>
-
-  <div class="row">
-    <div class="col-xs-6 text-center">
-      <%# 2weeksのグラフ %>
-      <h2>2Weeks</h2>
-      <canvas id="graph-2weeks" height="300" width="300"></canvas>
-    </div>
-
-    <div class="col-xs-6 text-center">
-      <%# asahiのグラフ %>
-      <h2>Graph</h2>
-      <canvas id="graph-asahi" height="300" width="300"></canvas>
-    </div>
-  </div>
-
-  <br><br>
-  <%= link_to(fa_icon('slideshare', text: 'Follower'), users_path, class: 'btn btn-primary btn-lg btn-block') %>
 </div>
+</ons-page>
