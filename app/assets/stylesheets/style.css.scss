@@ -37,14 +37,12 @@ p {
 }
 
 a {
-  text-decoration: none;
   color: #ffffff;
-  &:hover {
-    color: #ffffff;
-  }
-  &:active {
   text-decoration: none;
-  }
+  &:link  { text-decoration: none; }
+  &:visited { text-decoration: none; }
+  &:hover { text-decoration: none; }
+  &:active { text-decoration: none; }
 }
 
 .navbar {
