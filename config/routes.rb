@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   mount Resque::Server.new, at: "/resque"
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
-  devise_scope :user do
-    get 'sign_in', to: 'sessions#new', as: :new_session
-  end
 
-  resources :users, only:[:index]
+  resources :users, only:[:index, :new]
   resources :statistics, only:[:index]
 
   get 'stats' => 'statistics#stats'
