@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require angular
+//= require onsenui
+//- require Chart
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require Chart
 //= require_tree .

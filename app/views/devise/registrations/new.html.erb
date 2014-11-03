@@ -1,13 +1,22 @@
-<!-- 一番最初の画面 -->
+<div class="sign_in">
+  <ons-navigator title="Navigator" var="myNavigator">
+  <ons-page class="ons">
+  <div class="container">
+    <h1 class="text-center">
+      <%= image_tag 'logo.png', alt: 'ロゴ' %>
+    </h1>
+    <p class="text-center">
+      <span class="ma">MA</span>EMUKIは、あなたとフォロワーのつぶやき（投稿）から幸福度をはかるサービスです。
+    </p>
 
-<div class="container text-center">
-  <h1>
-    <%= image_tag("maemuki.png", alt: "MAEMUKI") %>
-  </h1>
-  <p class="lead">
-    <span class="red">MA</span>EMUKIは、あなたとフォロワーのつぶやき（投稿）から幸福度をはかるサービスです。<small>（適当）</small>
-  </p>
-  <%= link_to(fa_icon('twitter', text: 'Twitterでログイン'), user_omniauth_authorize_path(:twitter), class: 'btn btn-info btn-lg btn-block') %>
-  <br>
-  <%= link_to(fa_icon('facebook-square', text: 'Facebookでログイン'), user_omniauth_authorize_path(:facebook), class: 'btn btn-info btn-lg btn-block') %>
+    <div class="login-form">
+      <%= link_to user_omniauth_authorize_path(:twitter) do %>
+        <ons-button modifier="large" class="login-button">
+          <i class="fa fa-twitter"></i> Twitterでログイン
+        </ons-button>
+      <% end %>
+    </div>
+  </div>
+  </ons-page>
+  </ons-navigator>
 </div>
