@@ -441,7 +441,8 @@ h6 {
 .navigation-bar__left {
   max-width: 50%;
   width: 27%;
-  text-align: left;
+  text-align: center;
+  line-height: 60px;
 }
 .navigation-bar__right {
   max-width: 50%;
@@ -2655,7 +2656,7 @@ h6 {
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
-  content: "\f105";
+  // content: "\f105";
 }
 /* topdoc
   name: Inset List

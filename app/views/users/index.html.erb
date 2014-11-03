@@ -1,50 +1,67 @@
-<%# Follower一覧画面 %> 
+<ons-page class="ons">
+<ons-toolbar>
+  <div class="left">
+    <%= link_to root_path do %>
+      <i class="fa fa-arrow-left"></i> Back</div>
+    <% end %>
+  <div class="center">Public</div>
+</ons-toolbar>
 
-<div class="users-header">
-  <div class="container text-center">
-    <h1><i class="fa fa-slideshare"></i> Follower</h1>
+<ons-list>
+<ons-list-item modifier="chevron" class="list-item-container">
+<div class="list-item-left">
+  <img src="img/yotsubato14.jpg" class="avator">
+</div>
+<div class="list-item-right">
+  <div class="list-item-content">
+    <div class="name">Daniel
+      <span class="lucent">@Danny</span>
+    </div>
+
+    <span class="desc">Hi, how are you? Glad to hear you are interested in our project.</span>
   </div>
 </div>
-<div class="container">
-  <table class="table table-hover table-condensed">
-    <tr>
-      <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
-      <td><h3>Taiyop</h3></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Week</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Month</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
-    </tr>
+</ons-list-item>
 
-    <tr>
-      <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
-      <td><h3>舟橋啓</h3></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Week</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Month</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
-    </tr>
-
-      <tr>
-      <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
-      <td><h3>izumin</h3></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Week</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Month</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
-    </tr>
-
-    <tr>
-      <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
-      <td><h3>どくぴー</h3></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Week</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Month</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
-    </tr>
-
-    <tr>
-      <td><%= image_tag("icon_example.png", :size => "60x60", :alt => "仮アイコン", :class => "img-thumbnail") %></td>
-      <td><h3>やましー</h3></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Week</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Month</button></td>
-      <td><button type="button" class="btn btn-primary btn-lg btn-block">Year</button></td>
-    </tr>
-  </table>
+<ons-list-item modifier="chevron" class="list-item-container">
+<div class="list-item-left">
+  <img src="img/yotsubato17.jpg" class="avator">
 </div>
+<div class="list-item-right">
+  <div class="list-item-content">
+    <div class="name">John</div>
+    <span class="desc">I am a teacher at a elementary school.</span>
+  </div>
+</div>
+</ons-list-item>
+
+<ons-list-item modifier="chevron" class="list-item-container">
+<div class="list-item-left">
+  <img src="img/yotsubato29.jpg" class="avator">
+</div>
+<div class="list-item-right">
+  <div class="list-item-content">
+    <div class="name">Lucy</div>
+
+    <span class="desc">Hello, nice meeting you <i class="fa fa-meh-o" style="color: orangered;"></i></span>
+  </div>
+</div>
+</ons-list-item>
+
+<ons-list-item modifier="chevron" class="list-item-container">
+<div class="list-item-left">
+  <img src="img/yotsubato51.jpg" class="avator">
+</div>
+<div class="list-item-right">
+  <div class="list-item-content">
+    <div class="name">Elizabeth
+      <span class="lucent">@Elizabeth</span>
+    </div>
+    <span class="desc"><ons-icon icon="fa-phone" fixed-width="false" size="13px"></ons-icon> 1-800-123-4567</span>
+    <br>
+    <span class="desc">Please call me when you're ready.</span>
+  </div>
+</div>
+</ons-list-item>
+</ons-list>
+</ons-page>
