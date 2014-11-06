@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
-  mount_uploader :image, UserUploader
+  # mount_uploader :image, UserUploader
 
   has_many :identities, dependent: :delete_all
 
