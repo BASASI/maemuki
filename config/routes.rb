@@ -12,9 +12,6 @@ Rails.application.routes.draw do
     get 'displacement' => 'users/statistics#displacement'
   end
 
-  get 'stats' => 'statistics#stats'
-  get 'displacement' => 'statistics#displacement'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
