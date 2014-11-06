@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       User.create!(
         name: auth.info.nickname.presence || auth.info.name.gsub(/\s/, '_'),
         screen_name: auth.info.name,
-        # image_url: auth.info.image
+        image: auth.info.image
       ).tap { |user| user.add_identity(auth) }
     end
   end
