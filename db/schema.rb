@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103110845) do
+ActiveRecord::Schema.define(version: 20141106174002) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141103110845) do
     t.datetime "updated_at"
     t.string   "screen_name"
     t.string   "image"
+    t.datetime "last_analyzed_at"
   end
 
   add_index "users", ["name"], name: "index_users_on_name"
