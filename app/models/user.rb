@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
 
   has_many :identities, dependent: :delete_all
 
+  def has_result?
+    self.last_analyzed_at.present?
+  end
+
   def has_provider?(provider)
     self.identities.any? { |i| i.provider == provider.to_s }
   end
