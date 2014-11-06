@@ -5,16 +5,16 @@
 
 <div class="container text-center">
   <h2>3Days</h2> 
-    <canvas id="graph-3days" height="250" width="250"></canvas>
+    <canvas id="graph-3days" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '3days') %>"></canvas>
 
   <h2>1Week</h2> 
-    <canvas id="graph-1week" height="250" width="250"></canvas>
+    <canvas id="graph-1week" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '1week') %>"></canvas>
 
   <h2>2Weeks</h2>
-    <canvas id="graph-2weeks" height="250" width="250"></canvas>
+    <canvas id="graph-2weeks" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '2weeks') %>"></canvas>
 
   <h2>Compare with the world<br>
-    <canvas id="graph-asahi" height="250" width="250"></canvas>
+    <canvas id="graph-displacement" height="250" width="250" data-url="<%= user_displacement_path(user_id: current_user.id) %>"></canvas>
 
   <div class="login-form">
     <%= link_to users_path do %>
