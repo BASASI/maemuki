@@ -7,11 +7,10 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :users, only:[:index, :new]
-  resources :statistics, only:[:index]
-
-  get 'stats' => 'statistics#stats'
-  get 'displacement' => 'statistics#displacement'
+  resources :users, only:[:index, :new] do
+    get 'stats' => 'users/statistics#stats'
+    get 'displacement' => 'users/statistics#displacement'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,11 +1,6 @@
-class StatisticsController < ApplicationController
-  def index
-    @statistics = Statistic.all
-    respond_to do |format|
-      format.html
-      format.json{ render json: @statistics }
-    end
-  end
+class Users::StatisticsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_user, only: [:stats, :displacement]
 
   def stats
     query = {}
@@ -16,7 +11,7 @@ class StatisticsController < ApplicationController
     elsif params[:range] == "2weeks"
       query = {date: 2.weeks.ago..Date.today}
     end
-    @statistics = Statistic.where(query)
+    @statistics = @uesr.where(query)
     positive_count = @statistics.pluck(:positive_count).inject { |sum, c| sum += c}
     negative_count = @statistics.pluck(:negative_count).inject { |sum, c| sum += c}
     render json: [
@@ -26,7 +21,7 @@ class StatisticsController < ApplicationController
   end
 
   def displacement
-    @statistics = Statistic.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
+    @statistics = @user.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
     positive_count = @statistics.pluck(:positive_count)
     negative_count = @statistics.pluck(:negative_count)
     render json: {
@@ -49,4 +44,10 @@ class StatisticsController < ApplicationController
         ]
       }
   end
+
+  private
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 end
