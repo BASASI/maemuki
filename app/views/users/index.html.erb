@@ -8,60 +8,21 @@
 </ons-toolbar>
 
 <ons-list>
-<ons-list-item modifier="chevron" class="list-item-container">
-<div class="list-item-left">
-  <img src="img/yotsubato14.jpg" class="avator">
-</div>
-<div class="list-item-right">
-  <div class="list-item-content">
-    <div class="name">Daniel
-      <span class="lucent">@Danny</span>
-    </div>
+  <% @users.each do |user| %>
+    <ons-list-item modifier="chevron" class="list-item-container">
+      <div class="list-item-left">
+        <%= image_tag user.image, class: 'avator', alt: user.name %>
+      </div>
+      <div class="list-item-right">
+        <div class="list-item-content">
+          <div class="name"><%= user.screen_name %>
+            <span class="lucent">@<%= user.name %></span>
+          </div>
 
-    <span class="desc">Hi, how are you? Glad to hear you are interested in our project.</span>
-  </div>
-</div>
-</ons-list-item>
-
-<ons-list-item modifier="chevron" class="list-item-container">
-<div class="list-item-left">
-  <img src="img/yotsubato17.jpg" class="avator">
-</div>
-<div class="list-item-right">
-  <div class="list-item-content">
-    <div class="name">John</div>
-    <span class="desc">I am a teacher at a elementary school.</span>
-  </div>
-</div>
-</ons-list-item>
-
-<ons-list-item modifier="chevron" class="list-item-container">
-<div class="list-item-left">
-  <img src="img/yotsubato29.jpg" class="avator">
-</div>
-<div class="list-item-right">
-  <div class="list-item-content">
-    <div class="name">Lucy</div>
-
-    <span class="desc">Hello, nice meeting you <i class="fa fa-meh-o" style="color: orangered;"></i></span>
-  </div>
-</div>
-</ons-list-item>
-
-<ons-list-item modifier="chevron" class="list-item-container">
-<div class="list-item-left">
-  <img src="img/yotsubato51.jpg" class="avator">
-</div>
-<div class="list-item-right">
-  <div class="list-item-content">
-    <div class="name">Elizabeth
-      <span class="lucent">@Elizabeth</span>
-    </div>
-    <span class="desc"><ons-icon icon="fa-phone" fixed-width="false" size="13px"></ons-icon> 1-800-123-4567</span>
-    <br>
-    <span class="desc">Please call me when you're ready.</span>
-  </div>
-</div>
-</ons-list-item>
+          <span class="desc"><%= user.description %></span>
+        </div>
+      </div>
+    </ons-list-item>
+  <% end %>
 </ons-list>
 </ons-page>
