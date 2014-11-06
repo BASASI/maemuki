@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   resources :users, only:[:index, :new]
-  resources :statistics, only:[:index]
 
   get 'stats' => 'statistics#stats'
   get 'displacement' => 'statistics#displacement'
