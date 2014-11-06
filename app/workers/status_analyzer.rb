@@ -2,7 +2,8 @@ class StatusAnalyzer
   @queue = :default
 
   def self.perform(user_id)
-    identity = User.find(user_id.to_i).identities.find_by(provider: 'twitter')
+    user = User.find(user_id.to_i)
+    identity = user.identities.find_by(provider: 'twitter')
     identity.statuses.group_by { |status| status.created_at.to_date }.each do |date, statuses|
       results = iminos(statuses.map(&:text))
       stat = identity.statistics.build(date: date, count: statuses.length)
@@ -16,6 +17,7 @@ class StatusAnalyzer
       end
       stat.save!
     end
+    user.update_attributes(last_analyzed_at: DateTime.now)
   end
 
   def self.iminos(statuses)
