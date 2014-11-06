@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  resources :users, only:[:index, :new]
+  resources :users, only:[:index, :new] do
+    get 'stats' => 'users/statistics#stats'
+    get 'displacement' => 'users/statistics#displacement'
+  end
 
   get 'stats' => 'statistics#stats'
   get 'displacement' => 'statistics#displacement'
