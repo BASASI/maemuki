@@ -64,6 +64,25 @@ namespace :rails do
     info "Running `#{command}` as #{user}@#{host}"
     exec %Q(ssh #{user}@#{host} -p #{host.port} -t "bash --login -c 'cd #{fetch(:deploy_to)}/current && #{command}'")
   end
+
+  namespace :worker do
+    desc 'Run workers'
+    task :start do
+      on roles(:app) do |h|
+        within current_path do
+          with rails_env: fetch(:rails_env) do
+            with pidfile: './tmp/resque.pid' do
+              with background: 'yes' do
+                with queue: '*' do
+                  exec :rake, 'environment resque:work'
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
 end
 
 namespace :db do
