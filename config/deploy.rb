@@ -70,14 +70,8 @@ namespace :rails do
     task :start do
       on roles(:app) do |h|
         within current_path do
-          with rails_env: fetch(:rails_env) do
-            with pidfile: './tmp/resque.pid' do
-              with background: 'yes' do
-                with queue: '*' do
-                  exec :rake, 'environment resque:work'
-                end
-              end
-            end
+          with rails_env: fetch(:rails_env), pidfile: './tmp/resque.pid', background: 'yes', queue: '*' do
+            execute :rake, 'environment resque:work'
           end
         end
       end
