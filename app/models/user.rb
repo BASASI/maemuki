@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
-  mount_uploader :image, UserUploader
+  # mount_uploader :image, UserUploader
 
   has_many :identities, dependent: :delete_all
 
@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
       User.create!(
         name: auth.info.nickname.presence || auth.info.name.gsub(/\s/, '_'),
         screen_name: auth.info.name,
-        # image_url: auth.info.image
+        description: auth.info.description,
+        image: auth.info.image
       ).tap { |user| user.add_identity(auth) }
     end
   end
