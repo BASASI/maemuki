@@ -5,88 +5,16 @@
 
 <div class="container text-center">
   <h2>3Days</h2> 
-  <canvas id="3days" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '3days') %>"></canvas>
-    <script>
-    var doughnutData = [
-    {
-      value: 70,
-      color:"#ee7835",
-      label: "ポジ"
-    },
-    {
-      value: 30,
-      color: "#94c9d0",
-      label: "ネガ"
-    }
-    ];
-    var options = {
-      percentageInnerCutout : 60
-    };
-    var myDoughnut = new Chart(document.getElementById("3days").getContext("2d")).Doughnut(doughnutData, options);
-    </script>
+    <canvas id="graph-3days" height="250" width="250"></canvas>
 
   <h2>1Week</h2> 
-    <canvas id="1week" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '1week') %>"></canvas>
-    <script>
-    var doughnutData = [
-    {
-      value: 70,
-      color:"#ee7835",
-      label: "ポジ"
-    },
-    {
-      value: 30,
-      color: "#94c9d0",
-      label: "ネガ"
-    }
-    ];
-    var options = {
-      percentageInnerCutout : 60
-    };
-    var myDoughnut = new Chart(document.getElementById("1week").getContext("2d")).Doughnut(doughnutData, options);
-    </script>
+    <canvas id="graph-1week" height="250" width="250"></canvas>
 
   <h2>2Weeks</h2>
-    <canvas id="2weeks" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '2weeks') %>"></canvas>
-    <script>
-    var doughnutData = [
-    {
-      value: 70,
-      color:"#ee7835",
-      label: "ポジ"
-    },
-    {
-      value: 30,
-      color: "#94c9d0",
-      label: "ネガ"
-    }
-    ];
-    var options = {
-      percentageInnerCutout : 60
-    };
-    var myDoughnut = new Chart(document.getElementById("2weeks").getContext("2d")).Doughnut(doughnutData, options);
-    </script>
+    <canvas id="graph-2weeks" height="250" width="250"></canvas>
 
   <h2>Compare with the world<br>
-    <canvas id="graph-displacement" height="250" width="250" data-url="<%= user_displacement_path(user_id: current_user.id) %>"></canvas>
-    <script>
-    var doughnutData = [
-    {
-      value: 70,
-      color:"#ee7835",
-      label: "ポジ"
-    },
-    {
-      value: 30,
-      color: "#94c9d0",
-      label: "ネガ"
-    }
-    ];
-    var options = {
-      percentageInnerCutout : 60
-    };
-    var myDoughnut = new Chart(document.getElementById("world").getContext("2d")).Doughnut(doughnutData, options);
-    </script>
+    <canvas id="graph-asahi" height="250" width="250"></canvas>
 
   <div class="login-form">
     <%= link_to users_path do %>
