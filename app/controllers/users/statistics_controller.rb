@@ -11,7 +11,7 @@ class Users::StatisticsController < ApplicationController
     elsif params[:range] == "2weeks"
       query = {date: 2.weeks.ago..Date.today}
     end
-    @statistics = @uesr.where(query)
+    @statistics = @user.identities.find_by(provider: :twitter).statistics.where(query)
     positive_count = @statistics.pluck(:positive_count).inject { |sum, c| sum += c}
     negative_count = @statistics.pluck(:negative_count).inject { |sum, c| sum += c}
     render json: [
@@ -21,7 +21,7 @@ class Users::StatisticsController < ApplicationController
   end
 
   def displacement
-    @statistics = @user.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
+    @statistics = @user.identities.find_by(provider: :twitter).statistics.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
     positive_count = @statistics.pluck(:positive_count)
     negative_count = @statistics.pluck(:negative_count)
     render json: {

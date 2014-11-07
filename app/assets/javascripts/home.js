@@ -1,12 +1,12 @@
 $(function() {
-  var $graph3days = $('#graph3days');
-  var $graph1week = $('#graph1week');
-  var $graph2weeks = $('#graph2weeks');
+  var $graph3days = $('#graph-3days');
+  var $graph1week = $('#graph-1week');
+  var $graph2weeks = $('#graph-2weeks');
   var $graphDisplacement = $('#graph-displacement');
 
-  $.each([$graph3days, $graph1week, $graph3weeks], function($graph) {
+  $.each([$graph3days, $graph1week, $graph2weeks], function(i, $graph) {
     if ($graph.is('*')) {
-      $get($graph.data('url'), function(res) {
+      $.get($graph.data('url'), function(res) {
           new Chart($graph[0].getContext('2d')).Pie(res.statistics);
       });
     }
