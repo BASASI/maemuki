@@ -11,34 +11,34 @@ class Users::StatisticsController < ApplicationController
     elsif params[:range] == "2weeks"
       query = {date: 2.weeks.ago..Date.today}
     end
-    @statistics = @uesr.where(query)
+    @statistics = @user.identities.find_by(provider: :twitter).statistics.where(query)
     positive_count = @statistics.pluck(:positive_count).inject { |sum, c| sum += c}
     negative_count = @statistics.pluck(:negative_count).inject { |sum, c| sum += c}
     render json: [
-        {value: positive_count, color: '#ffcccc', label: "ポジ"},
-        {value: negative_count, color: '#ccccff', label: "ネガ"}
+        {value: positive_count, color: '#ee7835', label: "ポジ"},
+        {value: negative_count, color: '#94c9d0', label: "ネガ"}
       ]
   end
 
   def displacement
-    @statistics = @user.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
+    @statistics = @user.identities.find_by(provider: :twitter).statistics.where(date: 2.weeks.ago..Date.today).order(:date).reverse_order
     positive_count = @statistics.pluck(:positive_count)
     negative_count = @statistics.pluck(:negative_count)
     render json: {
         labels: (0...14).map { |d| (Date.today - d).strftime('%m/%d') }.reverse,
         datasets: [
           {
-            fillColor:        "rgba(255,204,204,0.3)",
-            strokeColor:      "#ffcccc",
-            pointColor:       "#ffcccc",
-            pointStrokeColor: "#ffcccc",
+            fillColor:        "rgba(238,120,53,0.3)",
+            strokeColor:      "#ee7835",
+            pointColor:       "#ee7835",
+            pointStrokeColor: "#ee7835",
             data: positive_count
           },
           {
-            fillColor:        "rgba(204,204,255,0.3)",
-            strokeColor:      "#ccccff",
-            pointColor:       "#ccccff",
-            pointStrokeColor: "#ccccff",
+            fillColor:        "rgba(148,201,208,0.3)",
+            strokeColor:      "#94c9d0",
+            pointColor:       "#94c9d0",
+            pointStrokeColor: "#94c9d0",
             data: negative_count
           }
         ]
