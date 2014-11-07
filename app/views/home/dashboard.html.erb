@@ -1,27 +1,33 @@
 <ons-page class="ons">
-<ons-toolbar>
-  <div class="center">My Data</div>
-</ons-toolbar>
+  <ons-toolbar>
+    <div class="center">My Data</div>
+  </ons-toolbar>
 
-<div class="container text-center">
-  <h2>3Days</h2> 
-    <canvas id="graph-3days" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '3days') %>"></canvas>
+  <div class="container text-center">
+    <% if current_user.has_result? %>
+      <h2>3Days</h2> 
+      <canvas id="graph-3days" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '3days') %>"></canvas>
 
-  <h2>1Week</h2> 
-    <canvas id="graph-1week" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '1week') %>"></canvas>
+      <h2>1Week</h2> 
+      <canvas id="graph-1week" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '1week') %>"></canvas>
 
-  <h2>2Weeks</h2>
-    <canvas id="graph-2weeks" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '2weeks') %>"></canvas>
+      <h2>2Weeks</h2>
+      <canvas id="graph-2weeks" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '2weeks') %>"></canvas>
 
-  <h2>Compare with the world<br>
-    <canvas id="graph-displacement" height="250" width="250" data-url="<%= user_displacement_path(user_id: current_user.id) %>"></canvas>
-
-  <div class="login-form">
-    <%= link_to users_path do %>
-      <ons-button modifier="large" class="login-button"><i class="fa fa-male"></i> followers</ons-button>
+      <h2>Compare with the world</h2>
+      <canvas id="graph-displacement" height="250" width="250" data-url="<%= user_displacement_path(user_id: current_user.id) %>"></canvas>
+    <% else %>
+      <p class="text-center alert">
+        <i class="fa fa-spinner fa-spin"></i> Under analyzing...<br>Please try to reload after a few minutes.
+      </p>
     <% end %>
-    <!-- fontawesomeのNew Icons in 4.2が表示されない -->
-  </div>
-</div>
+
+    <div class="login-form">
+      <%= link_to users_path do %>
+        <ons-button modifier="large" class="login-button"><i class="fa fa-male"></i> followers</ons-button>
+      <% end %>
+      <!-- fontawesomeのNew Icons in 4.2が表示されない -->
+    </div>
+  </div><%# end of .container %>
 
 </ons-page>
