@@ -14,7 +14,7 @@
       <h2>2Weeks</h2>
       <canvas id="graph-2weeks" height="250" width="250" data-url="<%= user_stats_path(user_id: current_user.id, range: '2weeks') %>"></canvas>
 
-      <h2>Compare with the world</h2>
+      <h2>ネガポジグラフ</h2>
       <canvas id="graph-displacement" height="250" width="250" data-url="<%= user_displacement_path(user_id: current_user.id) %>"></canvas>
     <% else %>
       <p class="text-center alert">
