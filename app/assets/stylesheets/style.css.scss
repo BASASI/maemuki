@@ -3,6 +3,17 @@ body {
   background-color: #ffffff;
 }
 
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &.active {
+    color: #1f1f21;
+    text-decoration: none;
+  }
+}
+
+
 .sign_in {
   background-color: #94c9d0;
   width: 100%;
@@ -42,13 +53,14 @@ p {
   color: #999999;
 }
 
-a {
-  color: #ffffff;
-  text-decoration: none;
-  &:link  { text-decoration: none; }
-  &:visited { text-decoration: none; }
-  &:hover { text-decoration: none; }
-  &:active { text-decoration: none; }
+.btn-toolbar {
+  &:link,
+  &:visited,
+  &:hover,
+  &.active {
+    color: #ffffff;
+    text-decoration: none;
+  }
 }
 
 .navbar {
