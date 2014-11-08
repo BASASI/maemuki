@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106194145) do
+ActiveRecord::Schema.define(version: 20141108012533) do
 
   create_table "identities", force: true do |t|
     t.string   "uid"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141106194145) do
     t.string   "image"
     t.integer  "user_id"
     t.integer  "latest_id"
-    t.integer  "oldest_id"
+    t.integer  "oldest_id",  limit: 8
   end
 
   add_index "identities", ["uid", "provider"], name: "index_identities_on_uid_and_provider"
