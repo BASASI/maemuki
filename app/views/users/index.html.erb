@@ -1,7 +1,7 @@
 <ons-page class="ons">
 <ons-toolbar>
   <div class="left">
-    <%= link_to root_path do %>
+    <%= link_to root_path, class: "btn-toolbar" do %>
       <i class="fa fa-arrow-left"></i> Back</div>
     <% end %>
   <div class="center">Public</div>
@@ -10,6 +10,7 @@
 <ons-list>
   <% @users.each do |user| %>
     <ons-list-item modifier="chevron" class="list-item-container">
+    <%= link_to user do %>
       <div class="list-item-left">
         <%= image_tag user.image, class: 'avator', alt: user.name %>
       </div>
@@ -22,6 +23,7 @@
           <span class="desc"><%= user.description %></span>
         </div>
       </div>
+      <% end %>
     </ons-list-item>
   <% end %>
 </ons-list>
